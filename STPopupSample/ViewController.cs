@@ -25,8 +25,17 @@ namespace STPopupSample
 
         void Button_TouchUpInside(object sender, EventArgs e)
         {
-            STPopupController popupController = new STPopupController(new PopupViewController(new CGSize(View.Bounds.Width - 40, View.Bounds.Height - 120)));
+            // Old school
+            //var vc = new PopupViewController(new CGSize(View.Bounds.Width, View.Bounds.Height - 220));
+            //vc.ModalPresentationStyle = UIModalPresentationStyle.Popover;
+            //vc.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
+            //PresentModalViewController(vc, true);
+            //return;
+
+            STPopupController popupController = new STPopupController(new PopupViewController(new CGSize(View.Bounds.Width - 40, View.Bounds.Height - 220)));
             popupController.ContainerView.Layer.CornerRadius = 4f;
+            popupController.NavigationBarHidden = true;
+            popupController.Style = STPopupStyle.BottomSheet;
             popupController.BackgroundView.AddGestureRecognizer(new UITapGestureRecognizer((obj) => popupController.Dismiss()));
             popupController.PresentInViewController(this);
         }
