@@ -32,9 +32,12 @@ namespace STPopupSample
             //PresentModalViewController(vc, true);
             //return;
 
-            STPopupController popupController = new STPopupController(new PopupViewController(new CGSize(View.Bounds.Width - 40, View.Bounds.Height - 220)));
-            popupController.ContainerView.Layer.CornerRadius = 4f;
+            STPopupController popupController = new STPopupController(
+                new PopupViewController(new CGSize(View.Bounds.Width - 40, 
+                View.Bounds.Height - 420)));
+            popupController.ContainerView.Layer.CornerRadius = 8f;
             popupController.NavigationBarHidden = true;
+            popupController.TransitionStyle = STPopupTransitionStyle.SlideVertical;
             popupController.Style = STPopupStyle.BottomSheet;
             popupController.BackgroundView.AddGestureRecognizer(new UITapGestureRecognizer((obj) => popupController.Dismiss()));
             popupController.PresentInViewController(this);
